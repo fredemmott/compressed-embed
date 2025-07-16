@@ -16,4 +16,8 @@ target_sources(
   FredEmmott/CompressedEmbed/Win32Backend.hpp
 )
 target_compile_features(compressed-embed PUBLIC cxx_std_23)
+
+if (PROJECT_IS_TOP_LEVEL)
+  return()
+endif ()
 add_library(compressed-embed::runtime ALIAS compressed-embed)
