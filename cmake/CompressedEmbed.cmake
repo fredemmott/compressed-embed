@@ -43,7 +43,7 @@ function(add_compressed_embed_library TARGET)
     DEPENDS
     "${arg_INTERMEDIATE_JSON_FILE}"
     "${INPUT_FILES}"
-    compressed-embed::compressor
+    "${COMPRESSED_EMBED_EXE}"
     VERBATIM
     CODEGEN
     COMMAND
