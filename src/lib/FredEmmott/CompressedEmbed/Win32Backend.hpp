@@ -9,13 +9,14 @@
 
 #include "InputResource.hpp"
 #include "StoredResources.hpp"
+#include "config.hpp"
 
 namespace FredEmmott::CompressedEmbed {
 
 struct BasicWin32Backend {
-  static StoredResources compress(
-    DWORD algorithm, std::span<InputResource> input);
-  static std::vector<std::byte> decompress(
+  static COMPRESSED_EMBED_API StoredResources
+  compress(DWORD algorithm, std::span<InputResource> input);
+  static COMPRESSED_EMBED_API std::vector<std::byte> decompress(
     DWORD algorithm, std::span<const std::byte> compressed);
 };
 template <DWORD Algorithm>
