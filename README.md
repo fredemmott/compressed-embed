@@ -2,6 +2,8 @@
 
 A resource-embedding tool for C++23.
 
+Resources are combined into a single blob, compressed, and a C++ interface is generated for retrieving them in your application.
+
 ## Overview
 
 Given a file like:
@@ -52,6 +54,8 @@ You can also specify:
 - `backend`: one of the following
   - `Win32_MSZIP` *(default)*: The Windows compression API, using DEFLATE compression
   - `Win32_LZMS`: The Windows compression API, using Microsoft's undocumented LZMS compression
+
+Files are combined into a single blob to allow better compression when files are similar, e.g. when you're including several copies of the MIT license where only the first few lines differ.
 
 ## CMake integration
 
