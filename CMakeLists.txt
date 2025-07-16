@@ -13,3 +13,16 @@ if (NOT PROJECT_IS_TOP_LEVEL)
 endif ()
 
 add_subdirectory(src)
+
+install(
+  FILES "${CMAKE_CURRENT_LIST_DIR}/cmake/CompressedEmbed.cmake"
+  FILES "${CMAKE_CURRENT_LIST_DIR}/cmake/compressed-embed-config.cmake"
+  DESTINATION "lib/cmake/compressed-embed"
+)
+install(
+  EXPORT
+  exports
+  NAMESPACE "compressed-embed::"
+  FILE compressed-embed-targets.cmake
+  DESTINATION "lib/cmake/compressed-embed"
+)

@@ -10,7 +10,8 @@
       "hidden": true,
       "cacheVariables":{
         "CMAKE_TOOLCHAIN_FILE": "third-party/vcpkg/scripts/buildsystems/vcpkg.cmake"
-      }
+      },
+      "generator": "Ninja"
     },
     {
       "name": "clang-cl",

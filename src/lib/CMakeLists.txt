@@ -16,6 +16,12 @@ target_sources(
   FredEmmott/CompressedEmbed/Win32Backend.hpp
 )
 target_compile_features(compressed-embed PUBLIC cxx_std_23)
+set_target_properties(compressed-embed PROPERTIES EXPORT_NAME runtime)
+install(
+  TARGETS compressed-embed
+  EXPORT exports
+  LIBRARY ARCHIVE FILE_SET HEADERS
+)
 
 if (PROJECT_IS_TOP_LEVEL)
   return()
