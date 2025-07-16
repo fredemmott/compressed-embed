@@ -5,11 +5,11 @@
 #include <Windows.h>
 #include <compressapi.h>
 
+#include <FredEmmott/CompressedEmbed/config.hpp>
 #include <span>
 
 #include "InputResource.hpp"
 #include "StoredResources.hpp"
-#include "config.hpp"
 
 namespace FredEmmott::CompressedEmbed {
 

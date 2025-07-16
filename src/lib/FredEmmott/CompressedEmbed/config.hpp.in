@@ -2,8 +2,16 @@
 // SPDX-License-Identifier: MIT
 #pragma once
 
+#cmakedefine COMPRESSED_EMBED_WIN32_DLL
+
+#ifdef COMPRESSED_EMBED_WIN32_DLL
+
 #ifdef COMPRESSED_EMBED_INTERNAL
 #define COMPRESSED_EMBED_API __declspec(dllexport)
 #else
 #define COMPRESSED_EMBED_API __declspec(dllimport)
+#endif
+
+#else
+#define COMPRESSED_EMBED_API
 #endif
