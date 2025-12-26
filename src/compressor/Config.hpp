@@ -23,4 +23,6 @@ struct Config {
   std::string output_hpp_file;
 
   std::unordered_map<std::string, std::string> input_files;
+
+  bool include_singleton { true };
 };

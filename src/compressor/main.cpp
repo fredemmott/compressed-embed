@@ -44,6 +44,11 @@ class {0} {{
     compressed.mCompressed.size(),
     compressed.mUncompressedBufferSize);
 
+  if (config.include_singleton)
+  {
+    println(f, "  static const {}& Get();", config.output_class_name);
+  }
+
   for (auto&& [name, offset, size]: compressed.mResources) {
     println(
       f,
@@ -130,6 +135,11 @@ void write_cpp(const Config& config, const StoredResources& compressed) {
       (++count % 8) == 0 ? "\n      " : " ");
   }
   std::println(f, "}});");
+
+  std::println(
+    f,
+    "const {0}& {0}::Get() {{ static const {0} instance; return instance; }}",
+    config.output_class_name);
 
   if (!config.output_namespace.empty()) {
     std::println(f, "}} // namespace {}", config.output_namespace);

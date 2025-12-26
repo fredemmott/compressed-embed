@@ -51,6 +51,7 @@ You can then include the `.cpp` and `.hpp` files in your project; you will also 
 
 You can also specify:
 - `output_namespace`: put the generated class inside a namespace
+- `include_singleton`: set to `false` to remove the `Get()` static method
 - `backend`: one of the following
   - `Win32_MSZIP` *(default)*: The Windows compression API, using DEFLATE compression
   - `Win32_LZMS`: The Windows compression API, using Microsoft's undocumented LZMS compression
@@ -73,6 +74,7 @@ add_compressed_embed_library(
   OUTPUT_HPP "${CMAKE_CURRENT_BINARY_DIR}/include/licenses.hpp"
   NAMESPACE "MyProject::Foo"
   CLASSNAME Licenses
+  WITHOUT_SINGLETON # No ::Get()
   INPUTS
   Foo "${CMAKE_CURRENT_SOURCE_DIR}/foo.txt"
   Bar "${CMAKE_CURRENT_SOURCE_DIR}/bar.txt"
