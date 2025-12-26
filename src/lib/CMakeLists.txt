@@ -25,7 +25,12 @@ target_sources(
 )
 target_compile_definitions(compressed-embed PRIVATE COMPRESSED_EMBED_INTERNAL)
 target_compile_features(compressed-embed PUBLIC cxx_std_23)
-set_target_properties(compressed-embed PROPERTIES EXPORT_NAME runtime)
+set_target_properties(
+  compressed-embed
+  PROPERTIES
+  EXPORT_NAME runtime
+  DEBUG_POSTFIX "d"
+)
 install(
   TARGETS compressed-embed
   EXPORT exports
