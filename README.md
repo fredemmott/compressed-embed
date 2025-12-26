@@ -100,7 +100,27 @@ target_link_libraries(main PRIVATE licenses)
 
 ## Installing this tool
 
-vcpkg is recommended, using the `compressed-embed` port in [my vcpkg registry](https://github.com/fredemmott/vcpkg-registry); see [Microsoft's documentation](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries) for how to use git-based registries.
+vcpkg is recommended, using the `compressed-embed` port in [my vcpkg registry](https://github.com/fredemmott/vcpkg-registry); add `compressed-embed` to your `vcpkg.json` as usual, and add the registry to your `vcpkg-configuration.json`, e.g.:
+
+```json
+{
+  "registries": [
+    {
+      "kind": "git",
+      "repository": "https://github.com/fredemmott/vcpkg-registry",
+      "reference": "master",
+      "baseline": "COMMIT_HASH_GOES_HERE",
+      "packages": [
+        "compressed-embed"
+      ]
+    }
+  ]
+}
+```
+
+
+
+For more details, see [Microsoft's documentation](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries).
 
 ## Requirements
 
