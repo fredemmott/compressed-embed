@@ -56,8 +56,21 @@ class {0} {{
   std::span<const std::byte, {0}> {1}() const noexcept {{
     return std::span {{ mDecompressed }}.subspan<{2}, {0}>();
   }}
-  std::string_view {1}AsStringView() const noexcept {{
-    return {{ reinterpret_cast<const char*>(mDecompressed.data() + {2}), {0} }};
+
+  template<class T>
+  requires requires (T v, const std::byte* data, std::size_t size) {{
+    T {{ data, size }};
+  }}
+  T {1}() const noexcept {{
+    return {{ (mDecompressed.data() + {2}), {0} }};
+  }}
+
+  template<class T>
+  requires requires (T v, const char* data, std::size_t size) {{
+    T {{ data, size }};
+  }}
+  T {1}() const noexcept {{
+    return T {{ reinterpret_cast<const char*>(mDecompressed.data() + {2}), {0} }};
   }}
 )EOF",
       size,

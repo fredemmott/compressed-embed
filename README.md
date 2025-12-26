@@ -39,10 +39,22 @@ class Licenses {
   std::array<std::byte, 6724> mDecompressed;
  public:
   Licenses();
+  static const Licenses& Get();
 
-  std::span<const std::byte, 1086> Yoga() const noexcept;
-  std::string_view YogaAsStringView() const noexcept;
-  
+  std::span<const std::byte, 1086> Yoga() const noexcept { /* ... */ }
+    
+  template<class T>
+  requires requires (T v, const std::byte* data, std::size_t size) {
+    T { data, size };
+  }
+  T Yoga () const noexcept { /* ... */ }
+
+  // e.g. use T = std::string_view
+  template<class T>
+  requires requires (T v, const char* data, std::size_t size) {
+    T { data, size };
+  }
+  T Yoga() const noexcept { /* ... */ }
   // ... Repeat for other input files.
 };
 ```
