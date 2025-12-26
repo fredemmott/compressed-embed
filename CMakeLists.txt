@@ -21,17 +21,9 @@ else ()
   set(BINDIR "bin")
 endif ()
 
-include(CMakePackageConfigHelpers)
-configure_package_config_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/compressed-embed-config.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/cmake/compressed-embed-config.cmake"
-  INSTALL_DESTINATION lib/cmake/compressed-embed
-  PATH_VARS BINDIR
-)
-
 install(
   FILES "${CMAKE_CURRENT_SOURCE_DIR}/cmake/CompressedEmbed.cmake"
-  FILES "${CMAKE_CURRENT_BINARY_DIR}/cmake/compressed-embed-config.cmake"
+  FILES "${CMAKE_CURRENT_SOURCE_DIR}/cmake/compressed-embed-config.cmake"
   DESTINATION "lib/cmake/compressed-embed"
 )
 install(

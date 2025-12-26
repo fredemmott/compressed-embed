@@ -10,7 +10,11 @@ set_target_properties(
   PROPERTIES
   OUTPUT_NAME compressed-embed
 )
-install(TARGETS compressor TYPE RUNTIME)
+install(
+  TARGETS compressor
+  EXPORT exports
+  TYPE RUNTIME
+)
 
 if (PROJECT_IS_TOP_LEVEL)
   return()
